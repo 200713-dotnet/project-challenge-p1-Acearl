@@ -7,7 +7,7 @@ XSS = cross-site scripting, man-in-the-middle
 CSRF* = cross-site request forgery, phishing *@
 
 @* HTML WAY *@
-<form action="/order/placeorder" method="post">
+<form action="/Order/PlaceOrder" method="post">
   @foreach (var crust in @Model.Crusts)
   {
     <input type="radio" name="crust" id="crust" value="@crust.Name" data-val="true" data-val-required="Needed">
@@ -23,14 +23,13 @@ CSRF* = cross-site request forgery, phishing *@
   </select>
   @Html.ValidationMessageFor(m => m.Size)
 
-  @foreach (var topping in @Model.Toppings)
+  @foreach (var topping in @Model.ToppingsBase)
   {
     <input type="checkbox" name="selectedtoppings" id="selectedtoppings" value="@topping.Name">
     <label for="selectedtoppings">@topping.Name</label>
     @Html.ValidationMessageFor(m => m.SelectedToppings)
   }
 
-  <input type="submit" value="place order">
   <button type="submit">place order</button>
 </form>
 
