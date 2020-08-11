@@ -13,7 +13,7 @@ namespace PizzaBox.Client.Models
     public PizzaBoxDbContext _db;
     public List<CrustModel> Crusts { get; set; }
     public List<SizeModel> Sizes { get; set; }
-    public List<ToppingModel> Toppings { get; set; }
+    public List<ToppingConnection> Toppings { get; set; }
     public List<ToppingsBase> ToppingsBase { get; set; }
 
 
@@ -30,7 +30,7 @@ namespace PizzaBox.Client.Models
       _db = dbContext;
       Crusts = _db.Crusts.ToList();
       Sizes = _db.Sizes.ToList();
-      Toppings = _db.ToppingModel.ToList();
+      Toppings = _db.ToppingConnection.ToList();
       ToppingsBase = _db.ToppingsBase.ToList();
     }
   }

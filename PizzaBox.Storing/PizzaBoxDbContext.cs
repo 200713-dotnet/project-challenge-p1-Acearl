@@ -11,7 +11,7 @@ namespace PizzaBox.Storing
     public DbSet<PizzaModel> Pizzas { get; set; } //create table
     public DbSet<CrustModel> Crusts { get; set; }
     public DbSet<ToppingsBase> ToppingsBase { get; set; }
-    public DbSet<ToppingModel> ToppingModel { get; set; }
+    public DbSet<ToppingConnection> ToppingConnection { get; set; }
     
     public DbSet<SizeModel> Sizes { get; set; }
 
@@ -26,7 +26,7 @@ namespace PizzaBox.Storing
       builder.Entity<CrustModel>().HasKey(e => e.Id);
       builder.Entity<SizeModel>().HasKey(e => e.Id);
       builder.Entity<ToppingsBase>().HasKey(e => e.Id);
-      builder.Entity<ToppingModel>().HasKey(e => e.Id);
+      builder.Entity<ToppingConnection>().HasKey(e => e.Id);
     }
   }
 }

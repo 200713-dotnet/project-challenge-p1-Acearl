@@ -26,12 +26,12 @@ namespace PizzaBox.Storing.Repositories
         }
         public void CreateTopping(string passedTopping, int pizzaId)
         {
-            var topping = new ToppingModel();
+            var topping = new ToppingConnection();
             //topping.name = passedTopping;
             //topping.PizzaId = pizzaId;
             // System.Console.WriteLine("Topping info");
             // System.Console.WriteLine("Pizza " + topping.PizzaId);
-            _db.ToppingModel.Add(topping);
+            _db.ToppingConnection.Add(topping);
             _db.SaveChanges();
             //System.Console.WriteLine(ReadAllToppingIds().Last());
             
