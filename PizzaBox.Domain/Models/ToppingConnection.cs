@@ -1,8 +1,8 @@
 namespace PizzaBox.Domain.Models
 {
-  public class ToppingModel
+  public class ToppingConnection : ToppingsBase
   {
-    public PizzaModel Pizza;
+    public PizzaModel pizza;
     public ToppingsBase topping;
   }
 }

@@ -29,9 +29,7 @@ Values ('Mozzarella cheese',1.00),
 ('Pineapple',3.00),
 ('Gold Flakes',100.00);
 go
-INSERT Into Toppings([Name],Price)
-Values
-go
+
 -- Delete rows from table 'TableName'
 DELETE FROM Sizes
 WHERE 	Id = 2/* add search conditions here */

@@ -26,7 +26,7 @@ namespace PizzaBox.Storing
       builder.Entity<CrustModel>().HasKey(e => e.Id);
       builder.Entity<SizeModel>().HasKey(e => e.Id);
       builder.Entity<ToppingsBase>().HasKey(e => e.Id);
-      builder.Entity<ToppingModel>().HasKey();
+      builder.Entity<ToppingModel>().HasKey(e => e.Id);
     }
   }
 }
