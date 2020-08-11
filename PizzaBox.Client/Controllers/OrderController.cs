@@ -24,8 +24,26 @@ namespace PizzaBox.Client.Controllers
         {
             CrustModel c = new CrustModel(){Name = pvm.crust};
             SizeModel s = new SizeModel(){Name = pvm.size};
-            ToppingsBase t = new ToppingsBase(){Name = pvm.SelectedToppings[0]};
-            PizzaModel p = new PizzaModel(){Crust = c, Size = s, Toppings = new List<ToppingsBase>(){t}};
+            List<ToppingsBase> t = new List<ToppingsBase>();
+            int toppingCounter = 0;
+            int refToppingCounter = 0;
+            foreach (var toppingStr in pvm.SelectedToppings)
+            {
+                refToppingCounter=0;
+                foreach (var referenceTopping in pvm.ToppingsBase)
+                {
+                    System.Console.WriteLine("Yeet");
+                    System.Console.WriteLine(pvm.ToppingsBase.ElementAt(0));
+                    if(referenceTopping.Name.Equals(toppingStr))
+                    {
+                        t.Add(pvm.ToppingsBase.ElementAt(refToppingCounter));
+                    }
+                    refToppingCounter++;
+                }
+                toppingCounter++;
+            }
+            
+            PizzaModel p = new PizzaModel(){Crust = c, Size = s, Toppings = t};
             OrderModel o = new OrderModel(){Pizzas = new List<PizzaModel>(){p}};
             _db.Orders.Add(o);
             return View("displayOrders", o);

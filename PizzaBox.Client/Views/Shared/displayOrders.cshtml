@@ -1,8 +1,13 @@
 @model PizzaBox.Domain.Models.OrderModel;
 
 <div>
-    @foreach(var o in @Model.Pizzas)
+    @foreach(var p in @Model.Pizzas)
     {
-        <p>@o.Crust.Name</p>
+        <p>@p.Crust.Name</p>
+        @foreach(var t in p.Toppings)
+        {
+            <p>@t.Name</p>
+        }
     }
+    
 </div>

@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using PizzaBox.Domain.Factories;
 using PizzaBox.Domain.Models;
+using PizzaBox.Client;
 using PizzaBox.Storing;
 using System.Linq;
 
@@ -22,11 +23,12 @@ namespace PizzaBox.Client.Models
     public string crust { get; set; }
     [Required]
     public string size { get; set; }
-    [Range(2,5)]
+    // [minrange(2)]
+    // [maxrange(5)]
     public List<string> SelectedToppings { get; set; }
     public PizzaViewModel()
     {
-      
+      //ToppingsBase = _db.ToppingsBase.ToList();
     }
     public PizzaViewModel(PizzaBoxDbContext dbContext)
     {

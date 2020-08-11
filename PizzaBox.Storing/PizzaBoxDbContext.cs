@@ -15,6 +15,7 @@ namespace PizzaBox.Storing
     
     public DbSet<SizeModel> Sizes { get; set; }
 
+
     public PizzaBoxDbContext(DbContextOptions options) : base(options){} //dependency injection
 
     protected override void OnModelCreating(ModelBuilder builder)
