@@ -8,29 +8,31 @@ CSRF* = cross-site request forgery, phishing *@
 
 @* HTML WAY *@
 <form action="/Order/PlaceOrder" method="post">
+  <h1>Crust Selection</h1>
   @foreach (var crust in @Model.Crusts)
   {
     <input type="radio" name="crust" id="crust" value="@crust.Name" data-val="true" data-val-required="Needed">
-    <label for="crust">@crust.Name</label>
-    @Html.ValidationMessageFor(m => m.Crust)
+    <label for="crust">@crust.Name $@crust.price</label>
+    @Html.ValidationMessageFor(m => m.crust)
   }
-
-  <select name="size" id="">
+  <h1>Size Selection</h1>
+  <select style="Display:block" name="size" id="" data-val-required="Needed">
     @foreach (var size in @Model.Sizes)
     {
-      <option value="@size.Name">@size.Name</option>
+      <option value="@size.Name">@size.Name  @size.size"  $@size.price</option>
     }
   </select>
-  @Html.ValidationMessageFor(m => m.Size)
-
+  @Html.ValidationMessageFor(m => m.size)
+  <h1>Topping Selection</h1>
+  <div style="Display:block">
   @foreach (var topping in @Model.ToppingsBase)
   {
     <input type="checkbox" name="selectedtoppings" id="selectedtoppings" value="@topping.Name">
-    <label for="selectedtoppings">@topping.Name</label>
+    <label for="selectedtoppings">@topping.Name $@topping.price</label>
     @Html.ValidationMessageFor(m => m.SelectedToppings)
   }
-
-  <button type="submit">place order</button>
+  </div>
+  <button style="Display:block" type="submit">place order</button>
 </form>
 
 @* HTML HELPER WAY

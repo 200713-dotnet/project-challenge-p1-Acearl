@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using PizzaBox.Client.Models;
 using PizzaBox.Storing;
-
+using PizzaBox.Domain.Models;
 namespace PizzaBox.Client.Controllers
 {
     public class OrderController : Controller
@@ -19,6 +19,16 @@ namespace PizzaBox.Client.Controllers
         {
             _logger = logger;
             _db = db;
+        }
+        public IActionResult PlaceOrder(PizzaViewModel pvm)
+        {
+            CrustModel c = new CrustModel(){Name = pvm.crust};
+            SizeModel s = new SizeModel(){Name = pvm.size};
+            ToppingsBase t = new ToppingsBase(){Name = pvm.SelectedToppings[0]};
+            PizzaModel p = new PizzaModel(){Crust = c, Size = s, Toppings = new List<ToppingsBase>(){t}};
+            OrderModel o = new OrderModel(){Pizzas = new List<PizzaModel>(){p}};
+            _db.Orders.Add(o);
+            return View("displayOrders", o);
         }
 
         public IActionResult Order()

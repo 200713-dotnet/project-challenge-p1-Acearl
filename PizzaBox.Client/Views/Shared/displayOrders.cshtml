@@ -1,0 +1,8 @@
+@model PizzaBox.Domain.Models.OrderModel;
+
+<div>
+    @foreach(var o in @Model.Pizzas)
+    {
+        <p>@o.Crust.Name</p>
+    }
+</div>

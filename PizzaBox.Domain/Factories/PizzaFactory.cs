@@ -11,7 +11,7 @@ namespace PizzaBox.Domain.Factories
 
       p.Crust = new CrustModel();
       p.Size = new SizeModel();
-      p.Toppings = new List<PizzaBox.Domain.Models.ToppingModel>{ new PizzaBox.Domain.Models.ToppingModel() };
+      //p.Toppings = new List<PizzaBox.Domain.Models.ToppingModel>{ new PizzaBox.Domain.Models.ToppingModel() };
 
       return p;
     }

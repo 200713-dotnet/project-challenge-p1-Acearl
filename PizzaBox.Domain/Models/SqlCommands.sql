@@ -1,12 +1,13 @@
-use PizzaBoxDb
-go
-USE master
-go
 
-create DATABASE PizzaBoxDb
+USE master
 go
 drop DATABASE PizzaBoxDb
 go
+create DATABASE PizzaBoxDb
+go
+use PizzaBoxDb
+go
+
 
 
 INSERT INTO Crusts ([Name], price)
@@ -25,7 +26,8 @@ INSERT INTO ToppingsBase ([Name], price)
 Values ('Mozzarella cheese',1.00),
 ('American cheese',1.00),
 ('Pepperoni',3.00),
-('Pineapple',3.00);
+('Pineapple',3.00),
+('Gold Flakes',100.00);
 go
 INSERT Into Toppings([Name],Price)
 Values

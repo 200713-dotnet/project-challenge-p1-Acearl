@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace PizzaBox.Client.Models
 {
-  public class PizzaViewModel
+  public class OrderViewModel
   {
     // out to the client
     public PizzaBoxDbContext _db;
@@ -19,16 +19,13 @@ namespace PizzaBox.Client.Models
 
     // in from the client
     [Required(ErrorMessage = "Better select Crust")]
-    public string crust { get; set; }
+    public List<CrustModel> Crust { get; set; }
     [Required]
-    public string size { get; set; }
+    public List<SizeModel> Size { get; set; }
     [Range(2,5)]
-    public List<string> SelectedToppings { get; set; }
-    public PizzaViewModel()
-    {
-      
-    }
-    public PizzaViewModel(PizzaBoxDbContext dbContext)
+    public List<ToppingsBase> SelectedToppings { get; set; }
+
+    public OrderViewModel(PizzaBoxDbContext dbContext)
     {
       _db = dbContext;
       Crusts = _db.Crusts.ToList();
@@ -36,11 +33,5 @@ namespace PizzaBox.Client.Models
       Toppings = _db.ToppingModel.ToList();
       ToppingsBase = _db.ToppingsBase.ToList();
     }
-  }
-
-  public class CheckBoxTopping : ToppingsBase
-  {
-    public string Text { get; set; }
-    public bool IsSelected { get; set; }
   }
 }
